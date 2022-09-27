@@ -1,17 +1,10 @@
 // SPDX-License-Identifier: MIT
+pragma solidity ^0.8.6;
 
-pragma solidity ^0.8.7;
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/1f0e7cdf0494b4cee4389941b7ce50b767dc3184/contracts/access/Ownable2Step.sol";
 
-contract SimpleWallet {
+contract SimpleWallet is Ownable2Step  {
 
-address public owner;
-constructor()  {
-    owner = msg.sender;
-}
-modifier onlyOwner() {
-    require(owner == msg.sender, "you are not authorized");
-    _;
-}
 
     function withdrawMoney(address payable _to, uint _amount) public onlyOwner {
         
